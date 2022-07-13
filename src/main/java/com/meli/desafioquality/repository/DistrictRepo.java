@@ -3,9 +3,11 @@ package com.meli.desafioquality.repository;
 import com.meli.desafioquality.model.District;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Repository
@@ -27,6 +29,8 @@ public class DistrictRepo {
     }
 
     public List<District> getDistricts() {
-        return this
+        return this.listDistrict.values().stream().collect(Collectors.toCollection(ArrayList::new));
     }
+
+
 }
