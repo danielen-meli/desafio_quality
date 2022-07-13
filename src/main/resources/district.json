@@ -1,0 +1,10 @@
+[
+  {
+    "districtName":  "Dist1",
+    "squareMeterValue":  50
+  },
+  {
+    "districtName":  "Dist2",
+    "squareMeterValue":  150
+  }
+]
