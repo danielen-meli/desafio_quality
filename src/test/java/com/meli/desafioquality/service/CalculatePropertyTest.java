@@ -26,7 +26,10 @@ import static org.mockito.Mockito.verify;
 class CalculatePropertyTest {
 
     @InjectMocks
-    CalculateProperty service;
+    CalculateProperty propertyService;
+
+    @InjectMocks
+    DistrictService districtService;
 
     @Mock
     DistrictRepo districtRepo;
@@ -68,7 +71,7 @@ class CalculatePropertyTest {
     @Test
     void createDistrict() {
         District newDistrict = TestUtil.newDistrictSaved();
-        District savedDistrict = service.createDistrict(newDistrict);
+        District savedDistrict = districtService.createDistrict(newDistrict);
 
         assertThat(newDistrict.getDistrictName()).isEqualTo(savedDistrict.getDistrictName());
         verify(districtRepo, atLeastOnce()).saveDistrict(newDistrict);

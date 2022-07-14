@@ -75,15 +75,15 @@ public class CalculateProperty implements ICalculateProperty {
 
     }
 
-    @Override
-    public List<District> getAllDistricts() {
-        return districtRepo.getDistricts();
-    }
-
-    @Override
-    public District createDistrict(District district) {
-        return districtRepo.saveDistrict(district);
-    }
+//    @Override
+//    public List<District> getAllDistricts() {
+//        return districtRepo.getDistricts();
+//    }
+//
+//    @Override
+//    public District createDistrict(District district) {
+//        return districtRepo.saveDistrict(district);
+//    }
 
 
 }

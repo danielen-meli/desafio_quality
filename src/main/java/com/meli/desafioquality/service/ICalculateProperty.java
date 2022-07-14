@@ -13,6 +13,6 @@ public interface ICalculateProperty {
     double calculatePrice(Long id); //us-0002
     List<RoomDto> calculateSqrFtgRoom(Long id); // us-0004
     RoomDto largestRoom(Long id); // us-0003
-    List<District> getAllDistricts();
-    District createDistrict(District district);
+//    List<District> getAllDistricts();
+//    District createDistrict(District district);
 }
