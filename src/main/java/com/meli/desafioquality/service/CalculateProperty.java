@@ -59,7 +59,7 @@ public class CalculateProperty implements ICalculateProperty {
         return listRoom.stream().max(Comparator.comparing(RoomDto::getArea)).get();
     }
 
-    private Property verifyDistrict(PropertyRequest request){
+    public Property verifyDistrict(PropertyRequest request){
 
         District district = districtRepo.districtExists(request.getDistrict());
 

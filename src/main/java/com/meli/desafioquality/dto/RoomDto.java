@@ -10,15 +10,21 @@ import javax.validation.constraints.NotEmpty;
 
 @Getter
 @AllArgsConstructor
-public class RoomDto {
+public class RoomDto implements Comparable<RoomDto> {
     @NotEmpty(message = "O nome do cômodo não pode estar vazio")
     @Length(min = 1, max = 30, message = "O comprimento do cômodo não pode exceder 30 caracteres")
     private String name;
 
     private double area;
 
-    public RoomDto(Room room) {
-        this.name = room.getName();
-        this.area = room.getLength() * room.getWidth();
+    public RoomDto(Room room){
+            this.name=room.getName();
+            this.area=room.getLength()*room.getWidth();
+            }
+
+    @Override
+    public int compareTo(RoomDto o) {
+        if(o.name.equals(this.name) && o.area == this.area) return 0;
+        return 1;
     }
 }

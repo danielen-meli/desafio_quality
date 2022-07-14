@@ -1,6 +1,7 @@
 package com.meli.desafioquality.service;
 
 import com.meli.desafioquality.dto.PropertyRequest;
+import com.meli.desafioquality.dto.RoomDto;
 import com.meli.desafioquality.model.District;
 import com.meli.desafioquality.model.Property;
 import com.meli.desafioquality.repository.DistrictRepo;
@@ -16,6 +17,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
+import org.springframework.util.Assert;
+import org.springframework.util.ObjectUtils;
+
+import java.util.List;
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -63,10 +69,9 @@ class CalculatePropertyTest {
         PropertyRequest newProperty = TestUtil.newPropertyRequest();
         Property savedProperty = propertyService.createProperty(newProperty);
 
-
         assertThat(savedProperty.getId()).isPositive();
         assertThat(newProperty.getId()).isEqualTo(savedProperty.getId());
-        //verify(propertyRepo, atLeastOnce()).saveProperty(newProperty);
+        verify(propertyRepo, atLeastOnce()).saveProperty(ArgumentMatchers.any(Property.class));
     }
 
     @Test
@@ -94,6 +99,13 @@ class CalculatePropertyTest {
 
     @Test
     void calculateSqrFtgRoom() {
+        Property newProperty = TestUtil.newProperty();
+        List<RoomDto> totalAreaRoom = propertyService.calculateSqrFtgRoom(newProperty.getId());
+        List<RoomDto> listRoomUtil = TestUtil.listRoomDto();
+
+       for(int i = 0; i <= totalAreaRoom.size() - 1; i++) {
+          assertThat(totalAreaRoom.get(i).compareTo(listRoomUtil.get(i)) == 0).isTrue();
+      }
     }
 
     @Test
