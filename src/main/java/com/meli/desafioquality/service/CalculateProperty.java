@@ -82,5 +82,10 @@ public class CalculateProperty implements ICalculateProperty {
         return districtRepo.getDistricts();
     }
 
+    @Override
+    public District createDistrict(District district) {
+        return districtRepo.saveDistrict(district);
+    }
+
 
 }

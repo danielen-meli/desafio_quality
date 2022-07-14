@@ -8,7 +8,9 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Repository;
 
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter @Setter
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class District {
     private String districtName;
 
 
-    @NotEmpty(message = "O valor do metro quadrado no bairro não pode estar vazio")
+    @NotNull(message = "O valor do metro quadrado no bairro não pode estar vazio")
     private double squareMeterValue;
 
 }

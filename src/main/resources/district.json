@@ -1,9 +1,11 @@
 [
   {
+    "id": 1,
     "districtName":  "Dist1",
     "squareMeterValue":  50
   },
   {
+    "id": 2,
     "districtName":  "Dist2",
     "squareMeterValue":  150
   }

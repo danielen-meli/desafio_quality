@@ -4,6 +4,7 @@ package com.meli.desafioquality.model;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
@@ -23,5 +24,5 @@ public class Property {
     @Length (min = 1, max = 45, message = "O comprimento do bairro não pode exceder 30 caracteres")
     private District district;
 
-    private List<Room> listRoom;
+    private List<@Valid Room> listRoom;
 }

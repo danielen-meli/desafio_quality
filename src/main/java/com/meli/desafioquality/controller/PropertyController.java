@@ -5,6 +5,7 @@ import com.meli.desafioquality.dto.RoomDto;
 import com.meli.desafioquality.model.District;
 import com.meli.desafioquality.model.Property;
 import com.meli.desafioquality.service.ICalculateProperty;
+import com.meli.desafioquality.service.IDistrictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ public class PropertyController {
     @Autowired
     ICalculateProperty propertyService;
 
+
     @PostMapping("/register")
     public ResponseEntity<Property> registerProperty(@RequestBody @Valid PropertyRequest property){
 
@@ -27,24 +29,24 @@ public class PropertyController {
     }
 
 
-    @GetMapping("/calculateSqrFtgProp/${id}")
+    @GetMapping("/calculateSqrFtgProp/{id}")
     public ResponseEntity<Double> calculateSqrFtgProp(@PathVariable @Valid Long id){
         return ResponseEntity.ok(propertyService.calculateSqrFtgProp(id));
     }
 
-    @GetMapping("/largestRoom/${id}")
+    @GetMapping("/largestRoom/{id}")
     public ResponseEntity<RoomDto> largestRoom(@PathVariable @Valid Long id){
 
         return ResponseEntity.ok(propertyService.largestRoom(id));
     }
 
-    @GetMapping("/calculatePrice/${id}")
+    @GetMapping("/calculatePrice/{id}")
     public ResponseEntity<Double> calculatePrice(@PathVariable @Valid Long id){
 
         return ResponseEntity.ok(propertyService.calculatePrice(id));
     }
 
-    @GetMapping("/calculateSqrFtgRoom/${}")
+    @GetMapping("/calculateSqrFtgRoom/{id}")
     public ResponseEntity<List<RoomDto>> calculateSqrFtgRoom(@PathVariable @Valid Long id){
         return ResponseEntity.ok(propertyService.calculateSqrFtgRoom(id));
     }
@@ -54,5 +56,13 @@ public class PropertyController {
     public ResponseEntity<List<District>> getAllDistricts() {
         return ResponseEntity.ok(propertyService.getAllDistricts());
     }
+
+    @PostMapping("/registerDistrict")
+    public ResponseEntity<District> registerDistrict(@RequestBody @Valid District district){
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(propertyService.createDistrict(district));
+    }
+
+
 
 }
