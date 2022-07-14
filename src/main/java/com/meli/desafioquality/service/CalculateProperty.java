@@ -24,8 +24,6 @@ public class CalculateProperty implements ICalculateProperty {
     @Autowired
     DistrictRepo districtRepo;
 
-
-
     @Override
     public Property createProperty(PropertyRequest propertyRequest) {
         return propertyRepo.saveProperty(verifyDistrict(propertyRequest));
@@ -61,7 +59,7 @@ public class CalculateProperty implements ICalculateProperty {
         return listRoom.stream().max(Comparator.comparing(RoomDto::getArea)).get();
     }
 
-    private Property verifyDistrict(PropertyRequest request){
+    public Property verifyDistrict(PropertyRequest request){
 
         District district = districtRepo.districtExists(request.getDistrict());
 
@@ -77,15 +75,15 @@ public class CalculateProperty implements ICalculateProperty {
 
     }
 
-    @Override
-    public List<District> getAllDistricts() {
-        return districtRepo.getDistricts();
-    }
-
-    @Override
-    public District createDistrict(District district) {
-        return districtRepo.saveDistrict(district);
-    }
+//    @Override
+//    public List<District> getAllDistricts() {
+//        return districtRepo.getDistricts();
+//    }
+//
+//    @Override
+//    public District createDistrict(District district) {
+//        return districtRepo.saveDistrict(district);
+//    }
 
 
 }

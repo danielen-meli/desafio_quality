@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IDistrictService {
     List<District> getAllDistricts();
+    District createDistrict(District district);
 }

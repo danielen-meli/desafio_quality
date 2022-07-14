@@ -2,6 +2,7 @@ package com.meli.desafioquality.dto;
 
 import com.meli.desafioquality.model.District;
 import com.meli.desafioquality.model.Room;
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -11,6 +12,7 @@ import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Data
+@Builder
 public class PropertyRequest {
     private Long id;
 

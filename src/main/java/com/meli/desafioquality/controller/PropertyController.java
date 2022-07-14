@@ -21,7 +21,6 @@ public class PropertyController {
     @Autowired
     ICalculateProperty propertyService;
 
-
     @PostMapping("/register")
     public ResponseEntity<Property> registerProperty(@RequestBody @Valid PropertyRequest property){
 
@@ -52,16 +51,16 @@ public class PropertyController {
     }
 
 
-    @GetMapping("/districts")
-    public ResponseEntity<List<District>> getAllDistricts() {
-        return ResponseEntity.ok(propertyService.getAllDistricts());
-    }
-
-    @PostMapping("/registerDistrict")
-    public ResponseEntity<District> registerDistrict(@RequestBody @Valid District district){
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(propertyService.createDistrict(district));
-    }
+//    @GetMapping("/districts")
+//    public ResponseEntity<List<District>> getAllDistricts() {
+//        return ResponseEntity.ok(propertyService.getAllDistricts());
+//    }
+//
+//    @PostMapping("/registerDistrict")
+//    public ResponseEntity<District> registerDistrict(@RequestBody @Valid District district){
+//
+//        return ResponseEntity.status(HttpStatus.CREATED).body(propertyService.createDistrict(district));
+//    }
 
 
 
