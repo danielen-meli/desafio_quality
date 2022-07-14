@@ -21,7 +21,6 @@ public class PropertyController {
     @Autowired
     ICalculateProperty propertyService;
 
-
     @PostMapping("/register")
     public ResponseEntity<Property> registerProperty(@RequestBody @Valid PropertyRequest property){
 

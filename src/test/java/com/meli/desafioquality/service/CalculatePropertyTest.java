@@ -75,6 +75,5 @@ class CalculatePropertyTest {
 
         assertThat(newDistrict.getDistrictName()).isEqualTo(savedDistrict.getDistrictName());
         verify(districtRepo, atLeastOnce()).saveDistrict(newDistrict);
-
     }
 }
