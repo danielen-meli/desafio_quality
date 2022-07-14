@@ -24,8 +24,6 @@ public class CalculateProperty implements ICalculateProperty {
     @Autowired
     DistrictRepo districtRepo;
 
-
-
     @Override
     public Property createProperty(PropertyRequest propertyRequest) {
         return propertyRepo.saveProperty(verifyDistrict(propertyRequest));

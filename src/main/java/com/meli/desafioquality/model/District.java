@@ -1,15 +1,13 @@
 package com.meli.desafioquality.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.*;
 
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class District {
 
     private Long id;
