@@ -124,12 +124,13 @@ class CalculatePropertyTest {
 
 
     @Test
-    void verifyDistrict_throwExcpetion(){
+    void createProperty_throwExcpetion(){
+
         PropertyRequest newProperty = TestUtil.newPropertyRequest();
         newProperty.setDistrict(null);
 
         PropertyException exception = Assertions.assertThrows(PropertyException.class, ()->{
-            propertyService.verifyDistrict(newProperty);
+            propertyService.createProperty(newProperty);
         });
 
         assertThat(exception.getMessage()).contains("O bairro não existe");

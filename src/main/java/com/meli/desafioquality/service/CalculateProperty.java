@@ -45,11 +45,15 @@ public class CalculateProperty implements ICalculateProperty {
         return totalArea * property.getDistrict().getSquareMeterValue();
     }
 
-    @Override
-    public List<RoomDto> calculateSqrFtgRoom(Long id) { // 04
+    private List<RoomDto> pCalculateSqrFtgRoom(Long id) { // 04
         Property property = propertyRepo.getProperties().get(id);
 
         return property.getListRoom().stream().map(RoomDto::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RoomDto> calculateSqrFtgRoom (Long id) {
+        return pCalculateSqrFtgRoom(id);
     }
 
     @Override
@@ -59,7 +63,7 @@ public class CalculateProperty implements ICalculateProperty {
         return listRoom.stream().max(Comparator.comparing(RoomDto::getArea)).get();
     }
 
-    public Property verifyDistrict(PropertyRequest request){
+    private Property verifyDistrict(PropertyRequest request){
 
         District district = districtRepo.districtExists(request.getDistrict());
 
