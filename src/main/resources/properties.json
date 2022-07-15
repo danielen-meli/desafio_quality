@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "name": "Prop1",
+    "district": "Dist1",
+    "listRoom": [
+      {
+        "name": "Bedroom",
+        "width": 3,
+        "length": 4
+      },
+      {
+        "name": "Kitchen",
+        "width": 4,
+        "length": 4
+      },
+      {
+        "name": "Living Room",
+        "width": 5,
+        "length": 3
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Prop2",
+    "district": "Dist1",
+    "listRoom": [
+      {
+        "name": "Bedroom",
+        "width": 2.5,
+        "length": 3
+      },
+      {
+        "name": "Kitchen",
+        "width": 3,
+        "length": 3
+      },
+      {
+        "name": "Living Room",
+        "width": 4,
+        "length": 3
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Prop3",
+    "district": "Dist2",
+    "listRoom": [
+      {
+        "name": "Bedroom",
+        "width": 3,
+        "length": 3
+      },
+      {
+        "name": "Kitchen",
+        "width": 3,
+        "length": 3
+      },
+      {
+        "name": "Living Room",
+        "width": 3,
+        "length": 3
+      },
+      {
+        "name": "Bathroom",
+        "width": 3,
+        "length": 2
+      }
+    ]
+  }
+]

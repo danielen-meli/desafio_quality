@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "628957a7-ea90-4f0b-b13b-4e47e2934528",
+		"name": "Desafio_Quality",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar distritos/bairros",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"districtName\":  \"Dist1\",\n    \"squareMeterValue\":  55\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/district/registerDistrict",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"district",
+						"registerDistrict"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar todos os bairros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/district",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"district"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar proriedade/ imóvel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"name\": \"Prop1\",\n    \"district\": \"Dist1\",\n    \"listRoom\": [\n        {\n            \"name\": \"Bedroom\",\n            \"width\": 3,\n            \"length\": 4\n        },\n        {\n            \"name\": \"Kitchen\",\n            \"width\": 4,\n            \"length\": 4\n        },\n        {\n            \"name\": \"Living Room\",\n            \"width\": 5,\n            \"length\": 3\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/properties/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"properties",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostra a propriedade/ imóvel",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"name\": \"Prop1\",\n    \"district\": \"Dist1\",\n    \"listRoom\": [\n        {\n            \"name\": \"Bedroom\",\n            \"width\": 3,\n            \"length\": 4\n        },\n        {\n            \"name\": \"Kitchen\",\n            \"width\": 4,\n            \"length\": 4\n        },\n        {\n            \"name\": \"Living Room\",\n            \"width\": 5,\n            \"length\": 3\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/properties/calculateSqrFtgProp/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"properties",
+						"calculateSqrFtgProp",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostra o maior cômodo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"name\": \"Prop1\",\n    \"district\": \"Dist1\",\n    \"listRoom\": [\n        {\n            \"name\": \"Bedroom\",\n            \"width\": 3,\n            \"length\": 4\n        },\n        {\n            \"name\": \"Kitchen\",\n            \"width\": 4,\n            \"length\": 4\n        },\n        {\n            \"name\": \"Living Room\",\n            \"width\": 5,\n            \"length\": 3\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/properties/largestRoom/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"properties",
+						"largestRoom",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcula o preço do imóvel",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"name\": \"Prop1\",\n    \"district\": \"Dist1\",\n    \"listRoom\": [\n        {\n            \"name\": \"Bedroom\",\n            \"width\": 3,\n            \"length\": 4\n        },\n        {\n            \"name\": \"Kitchen\",\n            \"width\": 4,\n            \"length\": 4\n        },\n        {\n            \"name\": \"Living Room\",\n            \"width\": 5,\n            \"length\": 3\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/properties/calculatePrice/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"properties",
+						"calculatePrice",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostra area dos cômodos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"name\": \"Prop1\",\n    \"district\": \"Dist1\",\n    \"listRoom\": [\n        {\n            \"name\": \"Bedroom\",\n            \"width\": 3,\n            \"length\": 4\n        },\n        {\n            \"name\": \"Kitchen\",\n            \"width\": 4,\n            \"length\": 4\n        },\n        {\n            \"name\": \"Living Room\",\n            \"width\": 5,\n            \"length\": 3\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/properties/calculateSqrFtgRoom/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"properties",
+						"calculateSqrFtgRoom",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
