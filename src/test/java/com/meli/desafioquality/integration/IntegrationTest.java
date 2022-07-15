@@ -115,7 +115,6 @@ public class IntegrationTest {
         assertThat(districtCreatedBody[0].getSquareMeterValue()).isEqualTo(newDistrict.getSquareMeterValue());
     }
 
-   // properties/register    -> POST new property (precisa criar um distrito antes)
 
    // properties/calculateSqrFtgProp/1   -> GET Responde com a area total somada de todos os comodos
 
@@ -154,7 +153,27 @@ public class IntegrationTest {
 
         assertThat(propertyReturn.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(propertyBody).isNotNull();
+    }
 
+    @Test
+    @DisplayName("Testa se a rota post dá erro para adicionar um imóvel quando não há um bairro cadastrado")
+    public void registerAPropertyInvalid(){
+
+        // add a propriedade
+        PropertyRequest newProperty = TestUtil.newPropertyRequest();
+        String baseUrl = "http://localhost:" + port + "/properties/register";
+        HttpEntity<PropertyRequest> httpEntity = new HttpEntity<>(newProperty);
+
+
+        ResponseEntity<Property> propertyReturn =
+                testRestTemplate.exchange(baseUrl,
+                        HttpMethod.POST, httpEntity, Property.class);
+
+        Property propertyBody = propertyReturn.getBody();
+
+        assertThat(propertyReturn.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
+
+
 }
