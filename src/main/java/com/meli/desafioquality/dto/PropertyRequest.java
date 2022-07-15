@@ -26,6 +26,4 @@ public class PropertyRequest {
     private String district;
 
     private List<@Valid Room> listRoom;
-
-
 }

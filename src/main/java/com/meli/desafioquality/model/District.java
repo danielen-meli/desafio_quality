@@ -17,8 +17,6 @@ public class District {
 
     private String districtName;
 
-
     @NotNull(message = "O valor do metro quadrado no bairro não pode estar vazio")
     private double squareMeterValue;
-
 }

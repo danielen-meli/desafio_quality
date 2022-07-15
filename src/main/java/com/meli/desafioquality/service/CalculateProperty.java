@@ -72,18 +72,6 @@ public class CalculateProperty implements ICalculateProperty {
                     .build();
         }
         throw new PropertyException("O bairro não existe");
-
     }
-
-//    @Override
-//    public List<District> getAllDistricts() {
-//        return districtRepo.getDistricts();
-//    }
-//
-//    @Override
-//    public District createDistrict(District district) {
-//        return districtRepo.saveDistrict(district);
-//    }
-
 
 }

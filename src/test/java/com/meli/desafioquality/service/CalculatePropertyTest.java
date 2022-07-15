@@ -22,6 +22,7 @@ import org.mockito.quality.Strictness;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -112,20 +113,15 @@ class CalculatePropertyTest {
 
     @Test
     void largestRoom() {
+        Property newProperty = TestUtil.newProperty();
+        List<RoomDto> listRoom = TestUtil.listRoomDto();
+        RoomDto expectedRoom = listRoom.stream().max(Comparator.comparing(RoomDto::getArea)).get();
+
+        RoomDto room =  propertyService.largestRoom(newProperty.getId());
+
+        assertThat(room.getName()).isEqualTo(expectedRoom.getName());
     }
 
-    @Test
-    void getAllDistricts() {
-    }
-
-    @Test
-    void createDistrict() {
-        District newDistrict = TestUtil.newDistrictSaved();
-        District savedDistrict = districtService.createDistrict(newDistrict);
-
-        assertThat(newDistrict.getDistrictName()).isEqualTo(savedDistrict.getDistrictName());
-        verify(districtRepo, atLeastOnce()).saveDistrict(newDistrict);
-    }
 
     @Test
     void verifyDistrict_throwExcpetion(){

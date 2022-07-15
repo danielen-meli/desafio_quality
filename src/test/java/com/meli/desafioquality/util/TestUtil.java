@@ -73,4 +73,10 @@ public class TestUtil {
         return hashProperty;
     }
 
+    public static List<District> getAllDistricts() {
+        List<District> districtList = new ArrayList<District>();
+        District district = newDistrictSaved();
+        districtList.add(district);
+        return districtList;
+    }
 }
