@@ -6,6 +6,7 @@ import com.meli.desafioquality.model.Property;
 import com.meli.desafioquality.repository.DistrictRepo;
 import com.meli.desafioquality.repository.PropertyRepo;
 import com.meli.desafioquality.util.TestUtil;
+import org.apache.coyote.Response;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -140,13 +141,13 @@ public class IntegrationTest {
 
         // add a propriedade
         PropertyRequest newProperty = TestUtil.newPropertyRequest();
-        String baseUrl = "http://localhost:" + port + "/properties/register";
+        String baseUrl = "http://localhost:" + port + "/properties";
         HttpEntity<PropertyRequest> httpEntity = new HttpEntity<>(newProperty);
 
 
 
         ResponseEntity<Property> propertyReturn =
-                testRestTemplate.exchange(baseUrl,
+                testRestTemplate.exchange(baseUrl + "/register",
                         HttpMethod.POST, httpEntity, Property.class);
 
         Property propertyBody = propertyReturn.getBody();
@@ -173,6 +174,36 @@ public class IntegrationTest {
 
         assertThat(propertyReturn.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
 
+    }
+
+    @Test
+    @DisplayName("Testa se a rota que calcula o preço do imovel está correta")
+    public void calculatePrice() {
+        String baseUrlDistrict = "http://localhost:" + port + "/district";
+        District newDistrict = TestUtil.newDistrictSaved();
+        HttpEntity<District> httpEntityDistrict = new HttpEntity<>(newDistrict);
+
+        // add o distrito
+        ResponseEntity<District> districtCreatedReturn =
+                testRestTemplate.exchange(baseUrlDistrict + "/registerDistrict",
+                        HttpMethod.POST, httpEntityDistrict, District.class);
+
+
+        // add a propriedade
+        PropertyRequest newProperty = TestUtil.newPropertyRequest();
+        String baseUrl = "http://localhost:" + port + "/properties";
+        HttpEntity<PropertyRequest> httpEntity = new HttpEntity<>(newProperty);
+
+
+        ResponseEntity<Property> propertyReturn =
+                testRestTemplate.exchange(baseUrl + "/register",
+                        HttpMethod.POST, httpEntity, Property.class);
+
+        // calcula o valor
+        ResponseEntity<Double> totalPrice = testRestTemplate.exchange(baseUrl + "/calculatePrice/" + newProperty.getId(),
+                HttpMethod.GET, null, Double.class);
+
+        assertThat(totalPrice.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
 
