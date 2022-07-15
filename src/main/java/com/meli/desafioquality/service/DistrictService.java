@@ -23,5 +23,4 @@ public class DistrictService implements IDistrictService{
         return districtRepo.saveDistrict(district);
     }
 
-
 }

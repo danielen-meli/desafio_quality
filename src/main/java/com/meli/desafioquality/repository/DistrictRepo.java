@@ -20,7 +20,6 @@ public class DistrictRepo {
         return district;
     }
 
-
     public District districtExists(String districtName){
         if(listDistrict.containsKey(districtName)){
            return listDistrict.get(districtName);
@@ -32,5 +31,8 @@ public class DistrictRepo {
         return this.listDistrict.values().stream().collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public void clearDistricts() {
+        this.listDistrict.clear();
+    }
 
 }

@@ -13,15 +13,17 @@ public class PropertyRepo {
 
     HashMap<Long, Property> listProperties = new HashMap<>();
 
-
     public Property saveProperty(Property property){
         listProperties.put(property.getId(), property);
         return property;
     }
 
-
     public HashMap<Long, Property> getProperties(){
         return listProperties;
+    }
+
+    public void clearProperties() {
+        this.listProperties.clear();
     }
 
 }

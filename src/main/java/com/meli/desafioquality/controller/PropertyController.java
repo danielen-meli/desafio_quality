@@ -49,19 +49,4 @@ public class PropertyController {
     public ResponseEntity<List<RoomDto>> calculateSqrFtgRoom(@PathVariable @Valid Long id){
         return ResponseEntity.ok(propertyService.calculateSqrFtgRoom(id));
     }
-
-
-//    @GetMapping("/districts")
-//    public ResponseEntity<List<District>> getAllDistricts() {
-//        return ResponseEntity.ok(propertyService.getAllDistricts());
-//    }
-//
-//    @PostMapping("/registerDistrict")
-//    public ResponseEntity<District> registerDistrict(@RequestBody @Valid District district){
-//
-//        return ResponseEntity.status(HttpStatus.CREATED).body(propertyService.createDistrict(district));
-//    }
-
-
-
 }
