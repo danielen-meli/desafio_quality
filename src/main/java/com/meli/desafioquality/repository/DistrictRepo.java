@@ -31,4 +31,8 @@ public class DistrictRepo {
         return this.listDistrict.values().stream().collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public void clearDistricts() {
+        this.listDistrict.clear();
+    }
+
 }

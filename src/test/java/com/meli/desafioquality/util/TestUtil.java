@@ -5,6 +5,9 @@ import com.meli.desafioquality.dto.RoomDto;
 import com.meli.desafioquality.model.District;
 import com.meli.desafioquality.model.Property;
 import com.meli.desafioquality.model.Room;
+import com.meli.desafioquality.repository.DistrictRepo;
+import com.meli.desafioquality.repository.PropertyRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,8 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 public class TestUtil {
-
-
 
     public static District newDistrictSaved () {
 

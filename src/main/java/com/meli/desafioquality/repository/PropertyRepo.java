@@ -22,4 +22,8 @@ public class PropertyRepo {
         return listProperties;
     }
 
+    public void clearProperties() {
+        this.listProperties.clear();
+    }
+
 }
