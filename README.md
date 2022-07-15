@@ -15,7 +15,7 @@ acordo com a vizinhança)
 - Determinação da quantidade de metros quadrados que tem cada cômodo de uma propriedade.
 
 
-[Arquivos JSON Postman](https://github.com/blablablabla)
+ - Arquivos JSON Postman => desafio_quality/src/main/resources/PostMan
 
 ## Autores
 
