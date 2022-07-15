@@ -10,6 +10,7 @@ import com.meli.desafioquality.repository.PropertyRepo;
 import com.meli.desafioquality.util.TestUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -65,6 +66,7 @@ class CalculatePropertyTest {
 
 
     @Test
+    @DisplayName("Testa a criação de um imóvel, retornando positivamente.")
     void createProperty() {
         District newDistrict = TestUtil.newDistrictSaved();
         districtService.createDistrict(newDistrict);
@@ -78,6 +80,7 @@ class CalculatePropertyTest {
     }
 
     @Test
+    @DisplayName("Testa o método que calcula a área total da propriedade.")
     void calculateSqrFtgProp() {
         Property newProperty = TestUtil.newProperty();
         double value = propertyService.calculateSqrFtgProp(newProperty.getId());
@@ -90,6 +93,7 @@ class CalculatePropertyTest {
     }
 
     @Test
+    @DisplayName("Testa o método que calcula o valor da propriedade.")
     void calculatePrice() {
         Property newProperty = TestUtil.newProperty();
         double totalArea = propertyService.calculateSqrFtgProp(newProperty.getId());
@@ -101,6 +105,7 @@ class CalculatePropertyTest {
     }
 
     @Test
+    @DisplayName("Testa o método que calcula a área de cada cômodo do imóvel ")
     void calculateSqrFtgRoom() {
         Property newProperty = TestUtil.newProperty();
         List<RoomDto> totalAreaRoom = propertyService.calculateSqrFtgRoom(newProperty.getId());
@@ -112,6 +117,7 @@ class CalculatePropertyTest {
     }
 
     @Test
+    @DisplayName("Testa o método que seleciona o maior cômodo do imóvel")
     void largestRoom() {
         Property newProperty = TestUtil.newProperty();
         List<RoomDto> listRoom = TestUtil.listRoomDto();
@@ -124,7 +130,8 @@ class CalculatePropertyTest {
 
 
     @Test
-    void createProperty_throwExcpetion(){
+    @DisplayName("Testa se ao tentar criar uma propriedade sem um bairro válido a exceção é lançada. ")
+    void createProperty_throwException(){
 
         PropertyRequest newProperty = TestUtil.newPropertyRequest();
         newProperty.setDistrict(null);

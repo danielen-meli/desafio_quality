@@ -6,6 +6,7 @@ import com.meli.desafioquality.repository.DistrictRepo;
 import com.meli.desafioquality.repository.PropertyRepo;
 import com.meli.desafioquality.util.TestUtil;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -43,6 +44,7 @@ class DistrictServiceTest {
     }
 
     @Test
+    @DisplayName("Testa se retorna a lista de bairros.")
     void getAllDistricts() {
         List<District> districtListUtil = TestUtil.getAllDistricts();
         List<District> allDistrictsFromService = districtService.getAllDistricts();
@@ -52,6 +54,7 @@ class DistrictServiceTest {
     }
 
     @Test
+    @DisplayName("Testa o método que cria um bairro. ")
     void createDistrict() {
         District newDistrict = TestUtil.newDistrictSaved();
         District savedDistrict = districtService.createDistrict(newDistrict);
