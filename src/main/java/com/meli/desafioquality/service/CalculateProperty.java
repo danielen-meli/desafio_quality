@@ -16,6 +16,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Classe Service do imóvel.
+ */
 @Service
 public class CalculateProperty implements ICalculateProperty {
     @Autowired
@@ -24,11 +27,19 @@ public class CalculateProperty implements ICalculateProperty {
     @Autowired
     DistrictRepo districtRepo;
 
+    /** Cria um imóvel.
+     * @param propertyRequest
+     * @return Property
+     */
     @Override
     public Property createProperty(PropertyRequest propertyRequest) {
         return propertyRepo.saveProperty(verifyDistrict(propertyRequest));
     }
 
+    /** Calcula área total do imóvel.
+     * @param id
+     * @return double
+     */
     @Override
     public double calculateSqrFtgProp(Long id) {  // 01
         Property property = propertyRepo.getProperties().get(id);
@@ -38,6 +49,10 @@ public class CalculateProperty implements ICalculateProperty {
         return room.stream().mapToDouble(r -> r.getWidth() * r.getLength()).sum();
     }
 
+    /** Calcula preço do imóvel com base na área e valor do metro.
+     * @param id
+     * @return double
+     */
     @Override
     public double calculatePrice(Long id) {  // 02
         double totalArea =  calculateSqrFtgProp(id);
@@ -45,17 +60,29 @@ public class CalculateProperty implements ICalculateProperty {
         return totalArea * property.getDistrict().getSquareMeterValue();
     }
 
+    /** Calcula área de todos os cômodos do imóvel.
+     * @param id
+     * @return List<RoomDto>
+     */
     private List<RoomDto> pCalculateSqrFtgRoom(Long id) { // 04
         Property property = propertyRepo.getProperties().get(id);
 
         return property.getListRoom().stream().map(RoomDto::new).collect(Collectors.toList());
     }
 
+    /** Chama o método privado pCalculateSqrFtgRoom
+     * @param id
+     * @return List<RoomDto>
+     */
     @Override
     public List<RoomDto> calculateSqrFtgRoom (Long id) {
         return pCalculateSqrFtgRoom(id);
     }
 
+    /** Retorna o quarto com a maior área.
+     * @param id
+     * @return RoomDto
+     */
     @Override
     public RoomDto largestRoom(Long id) {
         List<RoomDto> listRoom = calculateSqrFtgRoom(id);
@@ -63,8 +90,11 @@ public class CalculateProperty implements ICalculateProperty {
         return listRoom.stream().max(Comparator.comparing(RoomDto::getArea)).get();
     }
 
+    /** Verifica se o distrito selecionado na criação do imóvel existe na lista de distritos cadastrados.
+     * @param request
+     * @return Property
+     */
     private Property verifyDistrict(PropertyRequest request){
-
         District district = districtRepo.districtExists(request.getDistrict());
 
         if(district != null){

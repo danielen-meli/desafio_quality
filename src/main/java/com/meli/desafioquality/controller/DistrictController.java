@@ -18,11 +18,19 @@ public class DistrictController {
     @Autowired
     IDistrictService districtService;
 
+    /**
+     * Retorna todo os bairros cadastrados
+     * @return ResponseEntity<List<District>>
+     */
     @GetMapping()
     public ResponseEntity<List<District>> getAllDistricts() {
         return ResponseEntity.ok(districtService.getAllDistricts());
     }
 
+    /** Cria os bairro através de um cadastro do mesmo.
+     * @param district
+     * @return ResponseEntity<District>
+     */
     @PostMapping("/registerDistrict")
     public ResponseEntity<District> registerDistrict(@RequestBody @Valid District district){
 
