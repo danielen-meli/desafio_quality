@@ -2,11 +2,13 @@ package com.meli.desafioquality.service;
 
 import com.meli.desafioquality.dto.PropertyRequest;
 import com.meli.desafioquality.dto.RoomDto;
+import com.meli.desafioquality.exception.PropertyException;
 import com.meli.desafioquality.model.District;
 import com.meli.desafioquality.model.Property;
 import com.meli.desafioquality.repository.DistrictRepo;
 import com.meli.desafioquality.repository.PropertyRepo;
 import com.meli.desafioquality.util.TestUtil;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -123,5 +125,17 @@ class CalculatePropertyTest {
 
         assertThat(newDistrict.getDistrictName()).isEqualTo(savedDistrict.getDistrictName());
         verify(districtRepo, atLeastOnce()).saveDistrict(newDistrict);
+    }
+
+    @Test
+    void verifyDistrict_throwExcpetion(){
+        PropertyRequest newProperty = TestUtil.newPropertyRequest();
+        newProperty.setDistrict(null);
+
+        PropertyException exception = Assertions.assertThrows(PropertyException.class, ()->{
+            propertyService.verifyDistrict(newProperty);
+        });
+
+        assertThat(exception.getMessage()).contains("O bairro não existe");
     }
 }
